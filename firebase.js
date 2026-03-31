@@ -1,16 +1,20 @@
-// Firebase config
+// Firebase CDN
+import "https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js";
+import "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js";
+import "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js";
+import "https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyB_qWfwC0YcWHxjs16d6LnAxzKBZg0a0P0",
-  authDomain: "titi-live1.firebaseapp.com",
-  databaseURL: "https://titi-live1-default-rtdb.firebaseio.com",
-  projectId: "titi-live1",
-  storageBucket: "titi-live1.appspot.com",
-  messagingSenderId: "184688632840",
-  appId: "1:184688632840:web:85caa04f3884ca5c609dbd",
-  measurementId: "G-G8WSFMJYVL"
+    apiKey: "AIzaSyBzTcZID1MZjJGIR8ltR7M2KNn5eEyQHIE",
+    authDomain: "bd-rin.firebaseapp.com",
+    databaseURL: "https://bd-rin-default-rtdb.firebaseio.com",
+    projectId: "bd-rin",
+    storageBucket: "bd-rin.firebasestorage.app",
+    messagingSenderId: "1033740162310",
+    appId: "1:1033740162310:web:fd5641a3841e20f5517a87",
+    measurementId: "G-GZZBG1JBFM"
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Services
@@ -19,7 +23,7 @@ const db = firebase.firestore();
 const storage = firebase.storage();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-// Export globally for script.js
+// Export globally
 window.auth = auth;
 window.db = db;
 window.storage = storage;

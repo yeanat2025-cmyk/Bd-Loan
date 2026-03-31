@@ -1,3 +1,4 @@
+// script.js
 const loginForm = document.getElementById("loginForm");
 const errorBox = document.getElementById("error-box");
 
@@ -18,10 +19,10 @@ loginForm.addEventListener("submit", (e) => {
             localStorage.setItem("user", JSON.stringify({
                 uid: user.uid,
                 email: user.email,
-                displayName: user.displayName || "",
-                photoURL: user.photoURL || ""
+                displayName: user.displayName,
+                photoURL: user.photoURL
             }));
-            window.location.href = "home.html"; // Redirect after login
+            window.location.href = "gender_selection.html"; // Redirect after login
         })
         .catch((err) => showError(err.message));
 });
@@ -31,7 +32,6 @@ window.googleLogin = () => {
     auth.signInWithPopup(googleProvider)
         .then((res) => {
             const user = res.user;
-            // Save user info to Firestore
             db.collection("users").doc(user.uid).set({
                 displayName: user.displayName,
                 email: user.email,
