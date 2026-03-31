@@ -1,4 +1,4 @@
-// app.js
+// script.js
 const loginForm = document.getElementById("loginForm");
 const errorBox = document.getElementById("error-box");
 
