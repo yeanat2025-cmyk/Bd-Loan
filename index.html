@@ -6,8 +6,8 @@
     <title>Sign In</title>
     
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
 
     <style>
         * { box-sizing: border-box; }
@@ -96,81 +96,11 @@
         </div>
     </div>
 
-    <script>
-        // ১. আপনার Firebase কনফিগারেশন
-        const firebaseConfig = {
-            apiKey: "AIzaSyCzv08ydHYvUue_sgEjDoT221ocAedXYfM",
-            authDomain: "myproject-9f21b.firebaseapp.com",
-            projectId: "myproject-9f21b",
-            storageBucket: "myproject-9f21b.firebasestorage.app",
-            messagingSenderId: "670760388595",
-            appId: "1:670760388595:web:a88159aa1ef33a4da37486"
-        };
+    
 
-        // ২. Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-
-        // ৩. লগইন সাকসেস হ্যান্ডলার (আপনার চাওয়া লজিক)
-        function handleLoginSuccess(user) {
-            db.collection("users").doc(user.uid).get().then((doc) => {
-                if (doc.exists && doc.data().nickname) {
-                    // তথ্য থাকলে সরাসরি হোমে
-                    window.location.href = "home.html";
-                } else {
-                    // তথ্য না থাকলে বেসিক ইনফো পেজে
-                    window.location.href = "gender_selection.html";
-                }
-            }).catch((error) => {
-                console.error("Firestore Error:", error);
-                window.location.href = "gender_selection.html";
-            });
-        }
-
-        // ৪. ইমেইল লগইন
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const pass = document.getElementById('password').value;
-            const btn = document.getElementById('loginBtn');
-
-            btn.disabled = true;
-            btn.innerText = "Checking...";
-
-            auth.signInWithEmailAndPassword(email, pass)
-                .then((res) => handleLoginSuccess(res.user))
-                .catch(err => {
-                    showError(err.message);
-                    btn.disabled = false;
-                    btn.innerText = "SIGN IN";
-                });
-        });
-
-        // ৫. গুগল লগইন
-        function googleLogin() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider)
-                .then((res) => handleLoginSuccess(res.user))
-                .catch(err => showError(err.message));
-        }
-
-        // ৬. নতুন অ্যাকাউন্ট খোলা (টেস্টের জন্য)
-        function createNewAccount() {
-            const email = document.getElementById('email').value;
-            const pass = document.getElementById('password').value;
-            if(!email || !pass) { alert("Enter email/pass first!"); return; }
-
-            auth.createUserWithEmailAndPassword(email, pass)
-                .then((res) => handleLoginSuccess(res.user))
-                .catch(err => showError(err.message));
-        }
-
-        function showError(msg) {
-            const box = document.getElementById('error-box');
-            box.innerText = msg;
-            box.style.display = "block";
-        }
-    </script>
+     
+<script src="firebase.js"></script>
+<script src="script.js"></script>
+        
 </body>
 </html>
