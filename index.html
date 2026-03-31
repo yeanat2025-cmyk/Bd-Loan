@@ -4,53 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    
     <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
 
-    
+    <!-- Firebase CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
 </head>
 <body>
 
-    <div class="login-card">
-        <div class="logo-container">
-            <img src="assets/logo.png" alt="Logo">
-        </div>
-
-        <h2>Sign in</h2>
-        <p>to continue to your account</p>
-
-        <div id="error-box" class="error-msg"></div>
-
-        <form id="loginForm">
-            <div class="input-group">
-                <input type="email" id="email" placeholder="Email" required>
-            </div>
-            <div class="input-group">
-                <input type="password" id="password" placeholder="Password" required>
-            </div>
-            <button type="submit" class="signin-btn" id="loginBtn">SIGN IN</button>
-        </form>
-
-        <div class="divider">or</div>
-
-        <div class="social-btn" onclick="googleLogin()">
-            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
-            Continue with Google
-        </div>
-
-        <div style="margin-top: 25px; font-size: 14px;">
-            Don't have an account? <span class="footer-link" onclick="createNewAccount()">Create account</span>
-        </div>
+<div class="login-card">
+    <div class="logo-container">
+        <img src="assets/logo.png" alt="Logo">
     </div>
 
-    
+    <h2>Sign in</h2>
+    <p>to continue to your account</p>
 
-     
+    <div id="error-box" class="error-msg"></div>
+
+    <form id="loginForm">
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="signin-btn" id="loginBtn">SIGN IN</button>
+    </form>
+
+    <div class="divider">or</div>
+
+    <div class="social-btn" onclick="googleLogin()">
+        <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
+        Continue with Google
+    </div>
+
+    <div style="margin-top: 25px; font-size: 14px;">
+        Don't have an account? <span class="footer-link" onclick="createNewAccount()">Create account</span>
+    </div>
+</div>
+
+<!-- Firebase config -->
 <script src="firebase.js"></script>
 <script src="script.js"></script>
-        
+
 </body>
 </html>
